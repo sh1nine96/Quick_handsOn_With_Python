@@ -25,38 +25,40 @@ class Person3:
 # Inheritance lets us create classes that have different properties and behaviours without coding each one from scratch
 
 
-class Parent:
-    def __init__(self) -> None:
-        self.eyes = "green"
+# class Parent:
+#     def __init__(self) -> None:
+#         self.eyes = "green"
 
 
 # here we can see that Child is inheriting the Parent class bcz it's inside parethesis after the class name
 
 
-class Child(Parent):
-    def __init__(self) -> None:
-        super().__init__()
-        self.age = "7"
+# class Child(Parent):
+#     def __init__(self) -> None:
+#         super().__init__()
+#         self.age = "7"
 
 
 # through this we are able to have properties of parent class in child class
 
-child = Child()
-print(child.eyes)
-print(child.age)
+# child = Child()
+# print(child.eyes)
+# print(child.age)
+
+#-------------------------------------------------------#
 
 
-class Greetings:
-    def greet(self):
-        print("Hi!")
+# class Greetings:
+#     def greet(self):
+#         print("Hi!")
 
 
-class Person(Greetings):
-    name = "George"
+# class Person(Greetings):
+#     name = "George"
 
 
-p = Person()
-p.greet()
+# p = Person()
+# p.greet()
 
 
 # we can update how classes work by setting methods directly in the class. we will define "charge" method inside "Hybrid" class
@@ -85,3 +87,54 @@ electric.start_car()
 
 prius.charge()
 electric.fuel()
+
+#--------------------------------------------------------#
+# classes contain a method called as constructor that sets the properties of new objects, known as instances
+
+
+class Person:
+    def __init__(self, name, age) -> None:
+        self.name = name
+        self.age = age
+
+    def greet(self):
+        print("Hi!")
+
+
+class Nurse(Person):
+    def __init__(self, name, age) -> None:
+        super().__init__("Nurse " + name, age)
+
+    def intro(self):
+        print(f"Hi, I am {self.name}")
+
+
+class Student(Person):
+    def __init__(self, name, age, major) -> None:
+        super().__init__(name, age)
+        self.major = major
+
+
+class Parent(Person):
+    def __init__(self, name, age, kids):
+        super().__init__(name, age)
+        self.kids = kids
+
+# we can now create objects that own properties and inherit methods from both Student and Person
+
+# sam = Person("Sam", 25)
+# print(sam.name, sam.age)
+
+
+person1 = Nurse("Sam", 30)
+person2 = Nurse("Tom", 34)
+
+person1.intro()
+person2.greet()
+
+student = Student("Simon", 22, "chemistry")
+print(student.major)
+student.greet()
+
+parent = Parent("Adam", 45, 3)
+print(parent.name, parent.age, parent.kids)
